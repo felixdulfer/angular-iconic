@@ -29,11 +29,14 @@ if (typeof module !== 'undefined' &&
     return directiveDefinitionObject;
   }
 
-  angular.module('angular-iconic.directive', []);
-  angular.module('angular-iconic.directive')
-    .directive('iconic', AngularIconicDirective);
+  angular.module('angular-iconic.provider', [])
+    .provider('$iconic', $AngularIconicProvider);
+
+  angular.module('angular-iconic.directive', [])
+    .directive('iconic', $AngularIconicDirective);
 
   angular.module('angular-iconic', [
+    'angular-iconic.provider',
     'angular-iconic.directive'
   ]);
 
