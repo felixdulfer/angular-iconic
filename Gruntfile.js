@@ -12,16 +12,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     bump: {
       options: {
+        files: ['{bower,package}.json'],
         commitFiles: ['-a'],
         pushTo: 'origin'
-      },
-      package: {
-        files: ['{bower,package}.json', 'angular-iconic.js'],
-        regex: false
-      },
-      source: {
-        files: ['angular-iconic.js'],
-        regex: '@version:\\s*'
       }
     }
   });
