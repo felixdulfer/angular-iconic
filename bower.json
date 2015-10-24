@@ -1,0 +1,26 @@
+{
+  "name": "angular-iconic",
+  "homepage": "https://github.com/felixdulfer/angular-iconic",
+  "authors": [
+    "Felix Dulfer <felix@dulfer.me>"
+  ],
+  "description": "Simple AngularJS module for Iconic",
+  "main": "angular-iconic.js",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "iconic",
+    "svg"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7"
+  }
+}
