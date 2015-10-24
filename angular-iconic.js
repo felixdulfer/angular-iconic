@@ -14,15 +14,85 @@ if (typeof module !== 'undefined' &&
   // jshint latedef:false
   'use strict';
 
-  AngularIconicDirective.$inject = ['$window'];
-  function AngularIconicDirective($window) {
+  $AngularIconicProvider.$inject = [];
+  function $AngularIconicProvider() {
+
+    /** @type {String} Default location for .svg files */
+    var svgDir = void 0;
+
+    /** @type {String} Default location for .png fallback images */
+    var pngFallback = void 0;
+
+    /** Getter/Setter for default .svg files */
+    this.svgDir = function(value) {
+      if (typeof value !== 'undefined') {
+        svgDir = value;
+      }
+      return value;
+    };
+
+    /** Getter/Setter for default location of .png fallback images */
+    this.pngFallback = function(value) {
+      if (typeof value !== 'undefined') {
+        pngFallback = value;
+      }
+      return value;
+    };
+
+    /** Public API */
+    this.$get = function() {
+      return {
+
+        /** Getter for the configured dir for .svg files */
+        get svgDir() {
+          return svgDir;
+        },
+
+        /** Getter for the configured dir for .png fallback images */
+        get pngFallback() {
+          return pngFallback;
+        }
+      };
+    };
+  }
+
+  $AngularIconicDirective.$inject = ['$window', '$iconic', '$parse'];
+  function $AngularIconicDirective($window, $iconic, $parse) {
     var directiveDefinitionObject = {
       restrict: 'C',
-      link: function(scope, elm) {
-        $window.SVGInjector(elm, {
-          evalScripts: 'once',
-          pngFallback: '/assets/images/iconic/png'
-        });
+      link: function(scope, elm/*, attrs*/) {
+
+        // Grab the raw src attribute – We'll want to modify it for some
+        var src = elm.attr('data-src');
+
+        // Ugly hack to use .svg or an expression in the data-src attribute
+        // There is probably a better ("angular") way to do this but this does
+        // the trick for now...
+        if (!/.svg$/.test(src)) {
+          src = $parse(src)(scope);
+          elm.attr('data-src', src);
+        }
+
+        // if the path has no leading `/`, then we'll assume it is relative.
+        // For ease of use we'll make it relative to the svgDir.
+        // This should only change paths if the svgDir is actually configured.
+        if ($iconic.svgDir && src.substr(0,1) !== '/') {
+          src = $iconic.svgDir + '/' + src;
+          elm.attr('data-src', src);
+        }
+
+        /** @type {Object} Options for SVG Injector */
+        var options = {
+          evalScripts: 'once'
+        };
+
+        // If PNG fallbacks are configured then add this to the options
+        if ($iconic.pngFallback) {
+          options.pngFallback = $iconic.pngFallback;
+        }
+
+        // Inject the SVG
+        $window.SVGInjector(elm, options);
       }
     };
 
