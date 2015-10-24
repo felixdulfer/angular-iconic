@@ -22,9 +22,7 @@ Usage
 ### Add `angular-iconic` as a dependency
 
 ```javascript
-angular.module('app', [
-  'angular-iconic'
-]);
+angular.module('app', ['angular-iconic']);
 ```
 
 ### Add an icon to your page
