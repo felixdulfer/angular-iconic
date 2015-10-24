@@ -29,9 +29,9 @@ angular.module('app', [
 
 ```html
 <img data-src="/assets/images/iconic/smart/lock.svg" 
-  class="iconic iconic-sm" 
-  data-state="unlocked" 
-  alt="lock" />
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     alt="lock" />
 ```
 
 Configuration
@@ -46,6 +46,15 @@ angular.module('app', [
 .config(function($iconicProvider) {
   $iconicProvider.svgDir('/bower_components/open-iconic/svg');
 });
+```
+
+You can now use a path that is relative to the `svgDir`.
+
+```html
+<img data-src="lock.svg" 
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     alt="lock" />
 ```
 
 ### Configure a path for `.png` fallback images
