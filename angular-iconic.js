@@ -1,6 +1,5 @@
 /**
  * Iconic for AngularJS
- * @version v0.0.5
  * @link https://github.com/felixdulfer/angular-iconic
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
