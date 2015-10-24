@@ -9,7 +9,14 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
   
   // Configure tasks
-  grunt.initConfig({});
+  grunt.initConfig({
+    bump: {
+      options: {
+        files: ['bower.json', 'package.json'],
+        pushTo: 'origin'
+      }
+    }
+  });
   
   // Register the default task
   grunt.registerTask('default', []);
