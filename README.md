@@ -33,7 +33,7 @@ angular.module('app', [
 <img data-src="/assets/images/iconic/smart/lock.svg" 
      class="iconic iconic-sm" 
      data-state="unlocked" 
-     alt="lock" />
+     alt="lock">
 ```
 
 Configuration
@@ -42,12 +42,10 @@ Configuration
 ### Set a default path for relative `data-src`
 
 ```javascript
-angular.module('app', [
-  'angular-iconic'
-])
-.config(function($iconicProvider) {
-  $iconicProvider.svgDir('/bower_components/open-iconic/svg');
-});
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {
+    $iconicProvider.svgDir('/bower_components/open-iconic/svg');
+  });
 ```
 
 You can now use a path that is relative to the configured `svgDir`.
@@ -56,7 +54,7 @@ You can now use a path that is relative to the configured `svgDir`.
 <img data-src="lock.svg" 
      class="iconic iconic-sm" 
      data-state="unlocked" 
-     alt="lock" />
+     alt="lock">
 ```
 
 Note that you can still use _absolute_ `data-src` if you need to. Any relative `data-src` will need to be relative to the configured `svgDir`.
@@ -64,11 +62,9 @@ Note that you can still use _absolute_ `data-src` if you need to. Any relative `
 ### Configure a path for `.png` fallback images
 
 ```javascript
-angular.module('app', [
-  'angular-iconic'
-])
-.config(function($iconicProvider) {
-  $iconicProvider.svgDir('/bower_components/open-iconic/svg');
-  $iconicProvider.pngFallback('/bower_components/open-iconic/png');
-});
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {
+    $iconicProvider.svgDir('/bower_components/open-iconic/svg');
+    $iconicProvider.pngFallback('/bower_components/open-iconic/png');
+  });
 ```
