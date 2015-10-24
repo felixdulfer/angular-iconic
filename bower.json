@@ -24,5 +24,9 @@
   "dependencies": {
     "angular": "~1.4.7",
     "svg-injector": "~1.1.3"
+  },
+  "devDependencies": {
+    "open-iconic": "~1.1.1",
+    "angular-snippets": "~2.0.0"
   }
 }
