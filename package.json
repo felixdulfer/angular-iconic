@@ -1,0 +1,30 @@
+{
+  "name": "angular-iconic",
+  "version": "1.0.0",
+  "description": "Simple AngularJS module for Iconic",
+  "main": "angular-iconic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixdulfer/angular-iconic.git"
+  },
+  "keywords": [
+    "angular",
+    "iconic",
+    "svg"
+  ],
+  "author": "Felix Dulfer <felix@dulfer.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felixdulfer/angular-iconic/issues"
+  },
+  "homepage": "https://github.com/felixdulfer/angular-iconic#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.6.0",
+    "jit-grunt": "^0.9.1",
+    "time-grunt": "^1.2.2"
+  }
+}
