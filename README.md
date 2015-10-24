@@ -33,3 +33,29 @@ angular.module('app', [
   data-state="unlocked" 
   alt="lock" />
 ```
+
+Configuration
+=====
+
+### Set a default path for relative `src`
+
+```javascript
+angular.module('app', [
+  'angular-iconic'
+])
+.config(function($iconicProvider) {
+  $iconicProvider.svgDir('/bower_components/open-iconic/svg');
+});
+```
+
+### Configure a path for `.png` fallback images
+
+```javascript
+angular.module('app', [
+  'angular-iconic'
+])
+.config(function($iconicProvider) {
+  $iconicProvider.svgDir('/bower_components/open-iconic/svg');
+  $iconicProvider.pngFallback('/bower_components/open-iconic/png');
+});
+```
