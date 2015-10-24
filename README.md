@@ -39,7 +39,7 @@ angular.module('app', [
 Configuration
 =====
 
-### Set a default path for relative `src`
+### Set a default path for relative `data-src`
 
 ```javascript
 angular.module('app', [
@@ -50,7 +50,7 @@ angular.module('app', [
 });
 ```
 
-You can now use a path that is relative to the `svgDir`.
+You can now use a path that is relative to the configured `svgDir`.
 
 ```html
 <img data-src="lock.svg" 
@@ -58,6 +58,8 @@ You can now use a path that is relative to the `svgDir`.
      data-state="unlocked" 
      alt="lock" />
 ```
+
+Note that you can still use _absolute_ `data-src` if you need to. Any relative `data-src` will need to be relative to the configured `svgDir`.
 
 ### Configure a path for `.png` fallback images
 
