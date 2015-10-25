@@ -150,6 +150,13 @@ if (typeof module !== 'undefined' &&
         // Grab the raw src attribute – We'll want to modify later on.
         src = elm.attr('data-src') || attrs.src;
 
+        // In case you want to use one attribute for everythin then we'll
+        // take the iconic attribute and use that as the src.
+        if (attrs.iconic) {
+          src = attrs.iconic;
+          elm.attr('data-src', src);
+        }
+
         // Ugly hack to use .svg or an expression in the data-src attribute
         // There is probably a better ("angular") way to do this but this does
         // the trick for now...
