@@ -48,7 +48,10 @@ angular.module('app', ['angular-iconic']);
 Configuration
 =====
 
-### Configure SVG Injector
+This component comes with a couple of configuration options available through 
+the `$iconicProvider`.
+
+### `injector()`: Configure SVG Injector
 
 You can use either IconicJS or SVGInjector. Both Strings and Functions are OK.
 The Provider will look for `window.IconicJS` and `window.SVGInjector` and use
@@ -66,7 +69,7 @@ angular.module('app', ['angular-iconic'])
   });
 ```
 
-### Set a default path for relative `data-src`
+### `svgDir()`: Set a default path prefix for relative paths
 
 Don't like long paths in your `data-src` attributes? Want to just copy & paste 
 the examples from the docs of https://useiconic.com? This option allows all 
@@ -92,12 +95,11 @@ Please not that the path in this example is resolved to `'/bower_components/open
 
 Note that you can still use _absolute_ `data-src` if you need to. Any relative `data-src` will need to be relative to the configured `svgDir`. Absolute paths will remain untouched.
 
-### Configure a path for `.png` fallback images
+### `pngFallback()`: Configure a path for PNG fallback images
 
 ```javascript
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {
-    $iconicProvider.svgDir('/bower_components/open-iconic/svg');
     $iconicProvider.pngFallback('/bower_components/open-iconic/png');
   });
 ```
