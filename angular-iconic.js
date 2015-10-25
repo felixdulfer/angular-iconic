@@ -27,12 +27,14 @@ if (typeof module !== 'undefined' &&
 
   /** Instantiates the Injector */
   function getInjector(injector) {
-    if (injector === 'IconicJS') {
-      injector = new window[injector]().inject;
-    } else {
-      injector = window[injector];
+    var Injector = injector;
+    if (typeof Injector === 'string') {
+      Injector = window[injector];
     }
-    return injector;
+    if (Injector === window.IconicJS) {
+      Injector = new Injector().inject;
+    }
+    return Injector;
   }
 
   $AngularIconicProvider.$inject = [];

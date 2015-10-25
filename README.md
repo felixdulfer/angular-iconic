@@ -201,6 +201,8 @@ You can use either 'IconicJS' or 'SVGInjector'.The Provider will look for
 `window.IconicJS` and `window.SVGInjector` and use whatever is available. 
 If you want to override:
 
+Using a String that refers to window['SVGInjector|IconicJS']:
+
 ```javascript
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {    
@@ -208,6 +210,16 @@ angular.module('app', ['angular-iconic'])
   });
 ```
 
-Note that this is a String that refers to `window['SVGInjector']`. This may not
-be very practical if you're using something like Browserify. I hope to be able
-to fix this shortcoming someday :).
+You can also pass a Function. This should be helpful when using something like
+[Browserify](http://browserify.org/).
+
+```javascript
+var svgInjector = require('svg-injector');
+
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {    
+    $iconicProvider.injector(svgInjector);
+  });
+```
+
+I haven't tested this yet. Try this at your own risk :).
