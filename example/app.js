@@ -6,6 +6,7 @@
   function DemoConfig($iconicProvider) {
     $iconicProvider.svgDir('/bower_components/open-iconic/svg');
     $iconicProvider.pngFallback('/bower_components/open-iconic/png');
+    $iconicProvider.injector('SVGInjector');
   }
 
   angular.module('app', [

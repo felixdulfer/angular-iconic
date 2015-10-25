@@ -23,6 +23,9 @@ if (typeof module !== 'undefined' &&
     /** @type {String} Default location for .png fallback images */
     var pngFallback = void 0;
 
+    /** @type {String} Function name of the injector (IconicJS|SVGInjector) */
+    var injector = 'SVGInjector';
+
     /** Getter/Setter for default .svg files */
     this.svgDir = function(value) {
       if (typeof value !== 'undefined') {
@@ -38,6 +41,13 @@ if (typeof module !== 'undefined' &&
       }
       return pngFallback;
     };
+
+    /** Getter/Setter for injector function to use */
+    this.injector = function(value) {
+      if (typeof value !== 'undefined') {
+        injector = value;
+      }
+      return injector;
     };
 
     /** Public API */
@@ -52,6 +62,11 @@ if (typeof module !== 'undefined' &&
         /** Getter for the configured dir for .png fallback images */
         get pngFallback() {
           return pngFallback;
+        },
+
+        /** Getter for the name of the injector function */
+        get injector() {
+          return injector;
         }
       };
     };
@@ -63,8 +78,13 @@ if (typeof module !== 'undefined' &&
       restrict: 'C',
       link: function(scope, elm/*, attrs*/) {
 
+        var src,
+          options = {},
+          injector,
+          iconic;
+
         // Grab the raw src attribute – We'll want to modify it for some
-        var src = elm.attr('data-src');
+        src = elm.attr('data-src');
 
         // Ugly hack to use .svg or an expression in the data-src attribute
         // There is probably a better ("angular") way to do this but this does
@@ -82,30 +102,38 @@ if (typeof module !== 'undefined' &&
           elm.attr('data-src', src);
         }
 
-        /** @type {Object} Options for SVG Injector */
-        var options = {
-          evalScripts: 'once'
-        };
+        // Should we run any script blocks found in the SVG?
+        options.evalScripts = 'once';
 
-        // If PNG fallbacks are configured then add this to the options
-        if ($iconic.pngFallback) {
-          options.pngFallback = $iconic.pngFallback;
-        }
+        // The directory where fallback PNGs are located for use if the browser
+        // doesn't support SVG. Only used if the option is set in the Provider.
+        options.pngFallback = $iconic.pngFallback ?
+          $iconic.pngFallback :
+          void 0;
+
+        // Get the injector
+        injector = $iconic.injector;
+
+        // Get iconic
+        iconic = $window[injector];
 
         // Inject the SVG
-        $window.SVGInjector(elm, options);
+        iconic(elm, options);
       }
     };
 
     return directiveDefinitionObject;
   }
 
+  // Register the Provider Module
   angular.module('angular-iconic.provider', [])
     .provider('$iconic', $AngularIconicProvider);
 
+  // Register the Directive Module
   angular.module('angular-iconic.directive', [])
     .directive('iconic', $AngularIconicDirective);
 
+  // Register the Angular Iconic Module
   angular.module('angular-iconic', [
     'angular-iconic.provider',
     'angular-iconic.directive'
