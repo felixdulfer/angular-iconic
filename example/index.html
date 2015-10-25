@@ -17,12 +17,18 @@
 
       <p><br></p>
 
+      <div ng-init="svgDir='/bower_components/open-iconic/svg'"></div>
+
       <img data-src="lock-locked.svg"
-        class="iconic iconic-sm" />
-      <img data-src="beaker.svg"
-        class="iconic iconic-md" />
-      <img data-src="cloudy.svg"
-        class="iconic iconic-lg" />
+        svg-dir="{{svgDir}}"
+        png-fallback="/bower_components/open-iconic/png"
+        class="iconic iconic-sm">
+      <img src="/bower_components/open-iconic/svg/beaker.svg"
+        class="iconic iconic-md">
+      <img iconic src="/bower_components/open-iconic/svg/cloudy.svg"
+        class="iconic-lg">
+      <img iconic="/bower_components/open-iconic/svg/camera-slr.svg"
+        class="iconic-xl">
 
       <h2><code>angular-iconic</code> Examples</h2>
 
