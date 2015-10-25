@@ -138,9 +138,8 @@ if (typeof module !== 'undefined' &&
 
         var src,
           injectorOptions = {},
-          injector = $iconic.injector,
-          invokeApply = $iconic.invokeApply || attrs.invokeApply,
-          iconic;
+          iconic = $iconic.injector,
+          invokeApply = $iconic.invokeApply || attrs.invokeApply;
 
         // Grab the raw src attribute – We'll want to modify it for some
         src = elm.attr('data-src');
@@ -157,7 +156,9 @@ if (typeof module !== 'undefined' &&
         // For ease of use we'll make it relative to the svgDir.
         // This should only change paths if the svgDir is actually configured.
         if ($iconic.svgDir && src.substr(0,1) !== '/') {
-          src = $iconic.svgDir + '/' + src;
+
+          // Strip trailing `/` and construct the new absolute path
+          src = ($iconic.svgDir).replace(/\/$/, '') + '/' + src;
           elm.attr('data-src', src);
         }
 
@@ -169,9 +170,6 @@ if (typeof module !== 'undefined' &&
         injectorOptions.pngFallback = $iconic.pngFallback ?
           $iconic.pngFallback :
           void 0;
-
-        // Get iconic
-        iconic = injector;
 
         /** Injects SVG */
         function inject() {
