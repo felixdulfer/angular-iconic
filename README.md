@@ -16,6 +16,16 @@ Install
 bower install angular-iconic
 ```
 
+If you're using [Open Iconic](https://useiconic.com/open/), then you will also
+want to install the SVGInjector.
+
+``` bash
+bower install svg-injector
+```
+
+If you're using [Iconic](https://useiconic.com), then you want to be sure to 
+load `iconic.min.js` into your application as well.
+
 Usage
 =====
 
@@ -36,6 +46,24 @@ angular.module('app', ['angular-iconic']);
 
 Configuration
 =====
+
+### Configure SVG Injector
+
+You can use either IconicJS or SVGInjector. Both Strings and Functions are OK.
+The Provider will look for `window.IconicJS` and `window.SVGInjector` and use
+whatever is available. If you want to override:
+
+```javascript
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {
+    
+    // Either as String:
+    $iconicProvider.injector('IconicJS');
+
+    // Or as Function:
+    $iconicProvider.injector(window.IconicJS);
+  });
+```
 
 ### Set a default path for relative `data-src`
 

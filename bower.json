@@ -22,11 +22,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.7",
-    "svg-injector": "~1.1.3"
+    "angular": "~1.4.7"
   },
   "devDependencies": {
     "open-iconic": "~1.1.1",
-    "angular-snippets": "~2.0.0"
+    "angular-snippets": "~2.0.0",
+    "svg-injector": "~1.1.3"
   }
 }

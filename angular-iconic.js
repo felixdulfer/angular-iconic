@@ -14,6 +14,22 @@ if (typeof module !== 'undefined' &&
   // jshint latedef:false
   'use strict';
 
+  /** Gets the first available injector */
+  function autoDetectInjector() {
+    return window.IconicJS || window.SVGInjector;
+  }
+
+  /** Instantiates the Injector */
+  function getInjector(IconicSVGInjector) {
+    if (typeof IconicSVGInjector === 'string') {
+      IconicSVGInjector = window[IconicSVGInjector];
+    }
+    if (window.IconicJS && window.IconicJS === IconicSVGInjector) {
+      IconicSVGInjector = new IconicSVGInjector();
+    }
+    return IconicSVGInjector;
+  }
+
   $AngularIconicProvider.$inject = [];
   function $AngularIconicProvider() {
 
@@ -23,8 +39,8 @@ if (typeof module !== 'undefined' &&
     /** @type {String} Default location for .png fallback images */
     var pngFallback = void 0;
 
-    /** @type {String} Function name of the injector (IconicJS|SVGInjector) */
-    var injector = 'SVGInjector';
+    /** @type {Function|String} (IconicJS|SVGInjector) */
+    var injector = autoDetectInjector();
 
     /** Getter/Setter for default .svg files */
     this.svgDir = function(value) {
@@ -64,9 +80,9 @@ if (typeof module !== 'undefined' &&
           return pngFallback;
         },
 
-        /** Getter for the name of the injector function */
+        /** Getter injector function */
         get injector() {
-          return injector;
+          return getInjector(injector);
         }
       };
     };
@@ -85,7 +101,7 @@ if (typeof module !== 'undefined' &&
 
         var src,
           injectorOptions = {},
-          injector,
+          injector = $iconic.injector,
           iconic;
 
         // Grab the raw src attribute – We'll want to modify it for some
@@ -116,15 +132,10 @@ if (typeof module !== 'undefined' &&
           $iconic.pngFallback :
           void 0;
 
-        // Get the injector
-        injector = $iconic.injector;
-
         // Get iconic – The docs on both injectors seem to be different.
         // IconicJS seems to get the injector via invoking the function and the
         // SVGInjector just provides the SVGInjector itself?
-        iconic = injector === 'IconicJS' ?
-          new $window[injector]() :
-          $window[injector];
+        iconic = injector;
 
         /** Injects SVG */
         function inject() {
