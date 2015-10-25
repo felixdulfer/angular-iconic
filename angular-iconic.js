@@ -28,7 +28,7 @@ if (typeof module !== 'undefined' &&
       if (typeof value !== 'undefined') {
         svgDir = value;
       }
-      return value;
+      return svgDir;
     };
 
     /** Getter/Setter for default location of .png fallback images */
@@ -36,7 +36,8 @@ if (typeof module !== 'undefined' &&
       if (typeof value !== 'undefined') {
         pngFallback = value;
       }
-      return value;
+      return pngFallback;
+    };
     };
 
     /** Public API */
