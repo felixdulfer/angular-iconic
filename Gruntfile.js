@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['angular-iconic.js'],
+            src: ['angular-iconic.js', 'CNAME'],
             dest: 'dist/'
           },
           {
