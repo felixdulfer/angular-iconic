@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title ng-bind='Label.name()'></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha256-gJ9rCvTS5xodBImuaUYf1WfbdDKq54HCPz9wk8spvGs= sha512-weqt+X3kGDDAW9V32W7bWc6aSNCMGNQsdOpfJJz/qD/Yhp+kNeR+YyvvWojJ+afETB31L0C4eO0pcygxfTgjgw==" crossorigin="anonymous">
+    <link href="bower_components/prism/themes/prism.css" rel="stylesheet">
+    <link href="bower_components/angular-snippets/dist/themes/bootstrap-tabs/style.css" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+
+      <p><br></p>
+
+      <div ng-init="svgDir='/bower_components/open-iconic/svg'"></div>
+
+      <img data-src="lock-locked.svg"
+        svg-dir="{{svgDir}}"
+        png-fallback="/bower_components/open-iconic/png"
+        class="iconic iconic-sm">
+      <img src="/bower_components/open-iconic/svg/beaker.svg"
+        class="iconic iconic-md">
+      <img iconic src="/bower_components/open-iconic/svg/cloudy.svg"
+        class="iconic-lg">
+      <img iconic="/bower_components/open-iconic/svg/camera-slr.svg"
+        class="iconic-xl">
+
+      <h2><code>angular-iconic</code> Examples</h2>
+
+      <p><br></p>
+      <p>These are just some basic examples based on Open Iconic. Mostly just for development purposes.</p>
+
+      <br>
+      <h4><code>data-src</code> as regular svg file</h4>
+
+      <snippets path="snippets/as-svg" files="['as-svg.html', 'app.js', 'app.css']">
+        <snippets-pane snippet="{name: 'run', cls: 'pull-right'}">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <iframe src="snippets/as-svg/index.html"></iframe>
+            </div>
+          </div>
+        </snippets-pane>
+      </snippets>
+
+      <br>
+      <h4><code>data-src</code> as expression</h4>
+      <snippets path="snippets/as-expression" files="['as-expression.html', 'app.js']">
+        <snippets-pane snippet="{name: 'run', cls: 'pull-right'}">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <iframe src="snippets/as-expression/index.html"></iframe>
+            </div>
+          </div>
+        </snippets-pane>
+      </snippets>
+    </div>
+
+    <script src="bower_components/prism/prism.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-snippets/dist/angular-snippets.js"></script>
+    <script src="bower_components/angular-snippets/dist/themes/bootstrap-tabs/theme.js"></script>
+    <script src="bower_components/svg-injector/svg-injector.js"></script>
+    <script src="/angular-iconic.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

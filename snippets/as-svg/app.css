@@ -1,0 +1,12 @@
+body {
+  padding: 2rem;
+}
+
+.iconic {
+  width: 64px;
+  height: 64px;
+}
+
+.iconic > path {
+  fill: goldenrod;
+}

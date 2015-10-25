@@ -1,0 +1,35 @@
+{
+  "name": "angular-snippets",
+  "version": "2.0.0",
+  "main": "dist/angular-snippets.min.js",
+  "description": "AngularJS directives to display source code with tabs and syntax highlighter (prism)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jbdemonte/angular-snippets.git"
+  },
+  "authors": ["Jean-Baptiste Demonte <jbdemonte@gmail.com> (http://jb.demonte.fr)"],
+  "homepage": "http://jbdemonte.github.io/angular-snippets/",
+  "license": "GPL-3.0+",
+  "ignore": [
+    "**/.*",
+    "assets",
+    "demo",
+    "tests",
+    "src",
+    "*.json",
+    "gulpfile.js",
+    "README.md"
+  ],
+  "keywords": [
+    "angular",
+    "code",
+    "tabs",
+    "syntax",
+    "highlighter",
+    "prism"
+  ],
+  "dependencies": {
+    "angular": "1.2 - 1.4",
+    "prism": "~1.0.0"
+  }
+}
