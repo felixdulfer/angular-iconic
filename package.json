@@ -1,6 +1,6 @@
 {
   "name": "angular-iconic",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Simple AngularJS module for Iconic",
   "main": "angular-iconic.js",
   "scripts": {
