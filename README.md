@@ -24,7 +24,8 @@ bower install svg-injector
 ```
 
 If you're using [Iconic](https://useiconic.com), then you want to be sure to 
-load `iconic.min.js` into your application as well.
+load `iconic.min.js` into your application. You don't need `svg-injector` in 
+this case.
 
 Usage
 =====
