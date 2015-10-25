@@ -147,8 +147,8 @@ if (typeof module !== 'undefined' &&
         // This is useful in cases where the Directive is used with attribute
         elm.addClass('iconic');
 
-        // Grab the raw src attribute – We'll want to modify it for some
-        src = elm.attr('data-src');
+        // Grab the raw src attribute – We'll want to modify later on.
+        src = elm.attr('data-src') || attrs.src;
 
         // Ugly hack to use .svg or an expression in the data-src attribute
         // There is probably a better ("angular") way to do this but this does
