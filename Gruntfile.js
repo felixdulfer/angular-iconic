@@ -45,7 +45,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: ['bower_components/**'],
-            dest: 'dist/bower_components/'
+            dest: 'dist/'
           },
           {
             expand: true,
