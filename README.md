@@ -204,6 +204,10 @@ If you want to override:
 ```javascript
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {    
-    $iconicProvider.injector('IconicJS');
+    $iconicProvider.injector('SVGInjector');
   });
 ```
+
+Note that this is a String that refers to `window['SVGInjector']`. This may not
+be very practical if you're using something like Browserify. I hope to be able
+to fix this shortcoming someday :).
