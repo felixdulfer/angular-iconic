@@ -27,11 +27,12 @@ if (typeof module !== 'undefined' &&
 
   /** Instantiates the Injector */
   function getInjector(injector) {
-    var Injector = window[injector];
     if (injector === 'IconicJS') {
-      Injector = new Injector().inject;
+      injector = new window[injector]().inject;
+    } else {
+      injector = window[injector];
     }
-    return Injector;
+    return injector;
   }
 
   $AngularIconicProvider.$inject = [];
@@ -84,7 +85,7 @@ if (typeof module !== 'undefined' &&
       return injector;
     };
 
-    /** Getter/Setter for injector function to use */
+    /** Getter/Setter for invoking scope.$apply */
     this.invokeApply = function(value) {
       if (typeof value !== 'undefined') {
         invokeApply = value;
@@ -114,17 +115,17 @@ if (typeof module !== 'undefined' &&
           return pngFallback;
         },
 
-        /** Getter injector function */
+        /** Getter for injector function */
         get injector() {
           return getInjector(injector);
         },
 
-        /** Getter injector function */
+        /** Getter for invokeApply option */
         get invokeApply() {
           return invokeApply;
         },
 
-        /** Getter injector function */
+        /** Getter for evalScripts option */
         get evalScripts() {
           return evalScripts;
         }
@@ -139,7 +140,7 @@ if (typeof module !== 'undefined' &&
     '$timeout'
   ];
   function $AngularIconicDirective($window, $iconic, $parse, $timeout) {
-    var directiveDefinitionObject = {
+    var $angularIconicDirectiveDefinitionObject = {
       restrict: 'C',
       link: function(scope, elm, attrs) {
 
@@ -198,7 +199,7 @@ if (typeof module !== 'undefined' &&
       }
     };
 
-    return directiveDefinitionObject;
+    return $angularIconicDirectiveDefinitionObject;
   }
 
   // Register the Provider Module
