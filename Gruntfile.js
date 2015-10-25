@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    clean: ['dist'],
+    clean: ['dist', 'angular-iconic.min.js'],
     copy: {
       pages: {
         files: [
@@ -54,6 +54,17 @@ module.exports = function(grunt) {
             dest: 'dist/'
           }
         ]
+      }
+    },
+    uglify: {
+      dist: {
+        options: {
+          sourceMap: true,
+          sourceMapName: 'angular-iconic.map'
+        },
+        files: {
+          'angular-iconic.min.js': ['angular-iconic.js']
+        }
       }
     },
     buildcontrol: {
@@ -87,6 +98,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'uglify',
     'copy:pages',
     'buildcontrol:pages'
   ]);
