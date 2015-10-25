@@ -24,9 +24,6 @@ if (typeof module !== 'undefined' &&
     if (typeof injector === 'string') {
       injector = window[injector];
     }
-    if (window.IconicJS && window.IconicJS === injector) {
-      injector = injector();
-    }
     return injector;
   }
 
