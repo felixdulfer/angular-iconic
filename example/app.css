@@ -27,3 +27,8 @@ iframe {
   width: 64px;
   height: 64px;
 }
+
+.iconic.iconic-xl {
+  width: 128px;
+  height: 128px;
+}
