@@ -126,6 +126,8 @@ Note that you can still use _absolute_ `data-src` if you need to. Any relative `
 
 ### `pngFallback()`: Configure a path for PNG fallback images
 
+Using the Provider:
+
 ```javascript
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {
@@ -133,17 +135,14 @@ angular.module('app', ['angular-iconic'])
   });
 ```
 
-### `injector()`: Configure SVG Injector
+Using image element attributes:
 
-You can use either 'IconicJS' or 'SVGInjector'.The Provider will look for 
-`window.IconicJS` and `window.SVGInjector` and use whatever is available. 
-If you want to override:
-
-```javascript
-angular.module('app', ['angular-iconic'])
-  .config(function($iconicProvider) {    
-    $iconicProvider.injector('IconicJS');
-  });
+```html
+<img data-src="lock.svg" 
+     png-fallback="/bower_components/open-iconic/png"
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     alt="lock">
 ```
 
 ### `invokeApply()`
@@ -165,7 +164,7 @@ Or you can do this via the element's attributes, using any truthy value:
      class="iconic iconic-sm" 
      data-state="unlocked" 
      alt="lock"
-     invoke-apply="true" >
+     invoke-apply="true">
 ```
 
 Please note that the default is `false` for this option because if you have a 
@@ -185,3 +184,26 @@ angular.module('app', ['angular-iconic'])
 ```
 
 Default value is set to `'once'`.
+
+You can also use the image element attributes to override:
+
+```html
+<img data-src="lock.svg" 
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     eval-scripts="always"
+     alt="lock">
+```
+
+### `injector()`: Configure SVG Injector
+
+You can use either 'IconicJS' or 'SVGInjector'.The Provider will look for 
+`window.IconicJS` and `window.SVGInjector` and use whatever is available. 
+If you want to override:
+
+```javascript
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {    
+    $iconicProvider.injector('IconicJS');
+  });
+```
