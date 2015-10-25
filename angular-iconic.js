@@ -72,14 +72,19 @@ if (typeof module !== 'undefined' &&
     };
   }
 
-  $AngularIconicDirective.$inject = ['$window', '$iconic', '$parse'];
-  function $AngularIconicDirective($window, $iconic, $parse) {
+  $AngularIconicDirective.$inject = [
+    '$window',
+    '$iconic',
+    '$parse',
+    '$timeout'
+  ];
+  function $AngularIconicDirective($window, $iconic, $parse, $timeout) {
     var directiveDefinitionObject = {
       restrict: 'C',
       link: function(scope, elm/*, attrs*/) {
 
         var src,
-          options = {},
+          injectorOptions = {},
           injector,
           iconic;
 
@@ -103,22 +108,32 @@ if (typeof module !== 'undefined' &&
         }
 
         // Should we run any script blocks found in the SVG?
-        options.evalScripts = 'once';
+        injectorOptions.evalScripts = 'once';
 
         // The directory where fallback PNGs are located for use if the browser
         // doesn't support SVG. Only used if the option is set in the Provider.
-        options.pngFallback = $iconic.pngFallback ?
+        injectorOptions.pngFallback = $iconic.pngFallback ?
           $iconic.pngFallback :
           void 0;
 
         // Get the injector
         injector = $iconic.injector;
 
-        // Get iconic
-        iconic = $window[injector];
+        // Get iconic – The docs on both injectors seem to be different.
+        // IconicJS seems to get the injector via invoking the function and the
+        // SVGInjector just provides the SVGInjector itself?
+        iconic = injector === 'IconicJS' ?
+          new $window[injector]() :
+          $window[injector];
 
-        // Inject the SVG
-        iconic(elm, options);
+        /** Injects SVG */
+        function inject() {
+          iconic(elm, injectorOptions);
+          return;
+        }
+
+        // Inject the SVG – Uses timeout to safely invoke `scope.$apply()`
+        $timeout(inject, true);
       }
     };
 
