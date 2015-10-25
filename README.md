@@ -98,3 +98,43 @@ angular.module('app', ['angular-iconic'])
     $iconicProvider.injector('IconicJS');
   });
 ```
+
+### `invokeApply()`
+
+In some cases you may want to invoke `scope.$apply()` to get around certain
+AngularJS pitfalls. You can do this via the Provider:
+
+```javascript
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {    
+    $iconicProvider.invokeApply(true);
+  });
+```
+
+Or you can do this via the element's attributes, using any truthy value:
+
+```html
+<img data-src="lock.svg" 
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     alt="lock"
+     invoke-apply="true" >
+```
+
+Please note that the default is `false` for this option because if you have a 
+page with many icons then this will also invoke many additional digests. I'm
+sure this is not good for performance.
+
+### `evalScripts()`
+
+See [SVGInjector options](https://github.com/iconic/SVGInjector#options) for
+more information.
+
+```javascript
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {    
+    $iconicProvider.evalScripts('once');
+  });
+```
+
+Default value is set to `'once'`.
