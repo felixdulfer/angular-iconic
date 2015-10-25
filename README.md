@@ -38,10 +38,45 @@ angular.module('app', ['angular-iconic']);
 
 ### Add an icon to your page
 
+Two things are important:
+
+* The `data-src` attribute – Most point to an svg file (also takes expressions).
+* The `iconic` class/attribute – This enables the Directive on your element.
+
+Everything else is optional. The basic principle here is that we'll try to 
+follow the normal Iconic way of doing things. 
+
 ```html
-<img data-src="/assets/images/iconic/smart/lock.svg" 
-     class="iconic iconic-sm" 
-     data-state="unlocked" 
+<!-- Using data-src attribute (The Iconic Way) -->
+<img data-src="/bower_components/open-iconic/svg/lock-locked.svg" 
+     class="iconic" 
+     alt="lock">
+```
+
+But we'll also enable some simple features to get the most out of the 
+integration with AngularJS. This makes the `iconic` class optional and it even
+makes the `data-src` attribute optional. The Directive will automatically add
+the required attributes back in so that IconicJS behaves like it normally would.
+
+```html
+<!-- Using iconic attribute (The Hybrid way) -->
+<img iconic 
+     data-src="/bower_components/open-iconic/svg/lock-locked.svg" 
+     alt="lock">
+
+<!-- Using just the iconic attribute (The angular-iconic way) -->
+<img iconic="/bower_components/open-iconic/svg/lock-locked.svg" 
+     alt="lock">
+```
+
+If you want the images to show up even without JS at your disposal then you can
+use the regular `src` attribute. This won't really do you much good in most 
+cases but it is available:
+
+```html
+<!-- Using src attribute (the not advised way) -->
+<img src="/bower_components/open-iconic/svg/lock-locked.svg" 
+     class="iconic" 
      alt="lock">
 ```
 
