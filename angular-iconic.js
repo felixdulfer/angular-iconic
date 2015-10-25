@@ -77,14 +77,6 @@ if (typeof module !== 'undefined' &&
       return injector;
     };
 
-    /** Getter/Setter for injector function to use */
-    this.injector = function(value) {
-      if (typeof value !== 'undefined') {
-        injector = value;
-      }
-      return injector;
-    };
-
     /** Getter/Setter for invoking scope.$apply */
     this.invokeApply = function(value) {
       if (typeof value !== 'undefined') {
@@ -94,7 +86,7 @@ if (typeof module !== 'undefined' &&
     };
 
     /** Getter/Setter for evalScripts */
-    this.invokeApply = function(value) {
+    this.evalScripts = function(value) {
       if (typeof value !== 'undefined') {
         evalScripts = value;
       }
