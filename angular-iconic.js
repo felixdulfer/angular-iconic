@@ -170,9 +170,7 @@ if (typeof module !== 'undefined' &&
           $iconic.pngFallback :
           void 0;
 
-        // Get iconic – The docs on both injectors seem to be different.
-        // IconicJS seems to get the injector via invoking the function and the
-        // SVGInjector just provides the SVGInjector itself?
+        // Get iconic
         iconic = injector;
 
         /** Injects SVG */
