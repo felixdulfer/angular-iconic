@@ -214,7 +214,8 @@ You can also pass a Function. This should be helpful when using something like
 [Browserify](http://browserify.org/).
 
 ```javascript
-var svgInjector = require('svg-injector');
+var angular = require('angular'),
+  svgInjector = require('svg-injector');
 
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {    
