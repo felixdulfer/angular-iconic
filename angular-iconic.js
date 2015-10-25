@@ -43,7 +43,7 @@ if (typeof module !== 'undefined' &&
     /** @type {String} Default location for .png fallback images */
     var pngFallback = void 0;
 
-    /** @type {Function|String} (IconicJS|SVGInjector) */
+    /** @type {String} (IconicJS|SVGInjector) */
     var injector = autoDetectInjector();
 
     /** Getter/Setter for default .svg files */
