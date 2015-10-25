@@ -133,13 +133,17 @@ if (typeof module !== 'undefined' &&
   ];
   function $AngularIconicDirective($window, $iconic, $parse, $timeout) {
     var $angularIconicDirectiveDefinitionObject = {
-      restrict: 'C',
+      restrict: 'AC',
       link: function(scope, elm, attrs) {
 
         var src,
           injectorOptions = {},
           iconic = $iconic.injector,
           invokeApply = $iconic.invokeApply || attrs.invokeApply;
+
+        // Make sure that the iconic class is always set
+        // This is useful in cases where the Directive is used with attribute
+        elm.addClass('iconic');
 
         // Grab the raw src attribute – We'll want to modify it for some
         src = elm.attr('data-src');
