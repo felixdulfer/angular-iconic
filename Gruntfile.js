@@ -13,6 +13,10 @@ module.exports = function(grunt) {
   // Configure tasks
   grunt.initConfig({
     watch: {
+      js: {
+        files: ['angular-iconic.js'],
+        tasks: ['uglify:dist']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
