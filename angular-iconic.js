@@ -140,6 +140,7 @@ if (typeof module !== 'undefined' &&
           injectorOptions = {},
           iconic = $iconic.injector,
           svgDir = attrs.svgDir || $iconic.svgDir,
+          pngFallback = attrs.pngFallback || $iconic.pngFallback,
           invokeApply = $iconic.invokeApply || attrs.invokeApply;
 
         // Make sure that the iconic class is always set
@@ -172,9 +173,7 @@ if (typeof module !== 'undefined' &&
 
         // The directory where fallback PNGs are located for use if the browser
         // doesn't support SVG. Only used if the option is set in the Provider.
-        injectorOptions.pngFallback = $iconic.pngFallback ?
-          $iconic.pngFallback :
-          void 0;
+        injectorOptions.pngFallback = pngFallback ? pngFallback : void 0;
 
         /** Injects SVG */
         function inject() {
