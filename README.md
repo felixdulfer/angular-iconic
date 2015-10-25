@@ -201,7 +201,7 @@ You can use either 'IconicJS' or 'SVGInjector'.The Provider will look for
 `window.IconicJS` and `window.SVGInjector` and use whatever is available. 
 If you want to override:
 
-Using a String that refers to window['SVGInjector|IconicJS']:
+Using a String that refers to `window['SVGInjector|IconicJS']`:
 
 ```javascript
 angular.module('app', ['angular-iconic'])
