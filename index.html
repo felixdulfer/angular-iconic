@@ -13,6 +13,31 @@
     <link href="/app.css" rel="stylesheet">
   </head>
   <body>
+
+    <header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand">angular-iconic</a>
+        </div>
+        <nav id="bs-navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/">Examples</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/felixdulfer/angular-iconic">GitHub</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <div class="container">
 
       <p><br></p>
@@ -30,13 +55,18 @@
       <img iconic="/bower_components/open-iconic/svg/camera-slr.svg"
         class="iconic-xl">
 
-      <h2><code>angular-iconic</code> Examples</h2>
+      <h1><code>angular-iconic</code> Examples</h1>
 
       <p><br></p>
       <p>These are just some basic examples based on Open Iconic. Mostly just for development purposes.</p>
+      <p>Also be sure to take a look at the source code of this page for more examples.</p>
+      <p>And also check out the <a href="https://github.com/felixdulfer/angular-iconic">GitHub Project</a>.</p>
 
       <br>
-      <h4><code>data-src</code> as regular svg file</h4>
+      <h2><code>data-src</code> as regular svg file</h2>
+      <blockquote>
+        <p>Basic usage with some minimal styling.</p>
+      </blockquote>
 
       <snippets path="snippets/as-svg" files="['as-svg.html', 'app.js', 'app.css']">
         <snippets-pane snippet="{name: 'run', cls: 'pull-right'}">
@@ -49,7 +79,10 @@
       </snippets>
 
       <br>
-      <h4><code>data-src</code> as expression</h4>
+      <h2><code>data-src</code> as expression</h2>
+      <blockquote>
+        <p>Using the Directive with AngularJS expressions.</p>
+      </blockquote>
       <snippets path="snippets/as-expression" files="['as-expression.html', 'app.js']">
         <snippets-pane snippet="{name: 'run', cls: 'pull-right'}">
           <div class="panel panel-default">
