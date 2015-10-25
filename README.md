@@ -91,7 +91,7 @@ You can now use a path that is relative to the configured `svgDir`.
      alt="lock">
 ```
 
-Please not that the path in this example is resolved to `'/bower_components/open-iconic/svg' + '/' + 'lock.svg'`. You'll wan't to consider some of the limitations this might bring you.
+Please not that the path in this example is resolved to an absolute path, like `'/bower_components/open-iconic/svg' + '/' + 'lock.svg'`. You'll wan't to consider some of the limitations this might bring you.
 
 Note that you can still use _absolute_ `data-src` if you need to. Any relative `data-src` will need to be relative to the configured `svgDir`. Absolute paths will remain untouched.
 
