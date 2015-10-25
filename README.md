@@ -84,7 +84,8 @@ Configuration
 =====
 
 This component comes with a couple of configuration options available through 
-the `$iconicProvider`.
+the `$iconicProvider`. For most of these options there's also a local override
+using the `img` element attributes.
 
 ### `svgDir()`: Set a default path prefix for relative paths
 
@@ -103,6 +104,17 @@ You can now use a path that is relative to the configured `svgDir`.
 
 ```html
 <img data-src="lock.svg" 
+     class="iconic iconic-sm" 
+     data-state="unlocked" 
+     alt="lock">
+```
+
+If you don't need/want to use the Provider then you can overide the relative
+path in the element attributes as well:
+
+```html
+<img data-src="lock.svg" 
+     svg-dir="/bower_components/open-iconic/svg"
      class="iconic iconic-sm" 
      data-state="unlocked" 
      alt="lock">
