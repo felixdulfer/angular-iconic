@@ -29,7 +29,7 @@ if (typeof module !== 'undefined' &&
   function getInjector(injector) {
     var Injector = window[injector];
     if (injector === 'IconicJS') {
-      Injector = new Injector();
+      Injector = new Injector().inject;
     }
     return Injector;
   }
