@@ -46,6 +46,12 @@ if (typeof module !== 'undefined' &&
     /** @type {String} (IconicJS|SVGInjector) */
     var injector = autoDetectInjector();
 
+    /** @type {Boolean} Inject icons requires $apply? */
+    var invokeApply = false;
+
+    /** @type {Boolean} evalScripts option from Iconc */
+    var evalScripts = 'once';
+
     /** Getter/Setter for default .svg files */
     this.svgDir = function(value) {
       if (typeof value !== 'undefined') {
@@ -70,6 +76,30 @@ if (typeof module !== 'undefined' &&
       return injector;
     };
 
+    /** Getter/Setter for injector function to use */
+    this.injector = function(value) {
+      if (typeof value !== 'undefined') {
+        injector = value;
+      }
+      return injector;
+    };
+
+    /** Getter/Setter for injector function to use */
+    this.invokeApply = function(value) {
+      if (typeof value !== 'undefined') {
+        invokeApply = value;
+      }
+      return invokeApply;
+    };
+
+    /** Getter/Setter for evalScripts */
+    this.invokeApply = function(value) {
+      if (typeof value !== 'undefined') {
+        evalScripts = value;
+      }
+      return evalScripts;
+    };
+
     /** Public API */
     this.$get = function() {
       return {
@@ -87,6 +117,16 @@ if (typeof module !== 'undefined' &&
         /** Getter injector function */
         get injector() {
           return getInjector(injector);
+        },
+
+        /** Getter injector function */
+        get invokeApply() {
+          return invokeApply;
+        },
+
+        /** Getter injector function */
+        get evalScripts() {
+          return evalScripts;
         }
       };
     };
@@ -101,11 +141,12 @@ if (typeof module !== 'undefined' &&
   function $AngularIconicDirective($window, $iconic, $parse, $timeout) {
     var directiveDefinitionObject = {
       restrict: 'C',
-      link: function(scope, elm/*, attrs*/) {
+      link: function(scope, elm, attrs) {
 
         var src,
           injectorOptions = {},
           injector = $iconic.injector,
+          invokeApply = $iconic.invokeApply || attrs.invokeApply,
           iconic;
 
         // Grab the raw src attribute – We'll want to modify it for some
@@ -128,7 +169,7 @@ if (typeof module !== 'undefined' &&
         }
 
         // Should we run any script blocks found in the SVG?
-        injectorOptions.evalScripts = 'once';
+        injectorOptions.evalScripts = $iconic.evalScripts;
 
         // The directory where fallback PNGs are located for use if the browser
         // doesn't support SVG. Only used if the option is set in the Provider.
@@ -147,8 +188,13 @@ if (typeof module !== 'undefined' &&
           return;
         }
 
-        // Inject the SVG – Uses timeout to safely invoke `scope.$apply()`
-        $timeout(inject, true);
+        // Inject the SVG – Uses timeout to safely invoke `scope.$apply()` if
+        // this preference is set in the Provider or the elm attributes.
+        if (invokeApply) {
+          $timeout(inject, true);
+        } else {
+          inject();
+        }
       }
     };
 
