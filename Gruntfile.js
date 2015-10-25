@@ -3,7 +3,9 @@
 module.exports = function(grunt) {
 
   // Load tasks when needed
-  require('jit-grunt')(grunt, {});
+  require('jit-grunt')(grunt, {
+    buildcontrol: 'grunt-build-control'
+  });
 
   // Report timing for tasks
   require('time-grunt')(grunt);
@@ -31,6 +33,49 @@ module.exports = function(grunt) {
         }
       }
     },
+    clean: ['dist'],
+    copy: {
+      pages: {
+        files: [
+          {
+            expand: true,
+            src: ['angular-iconic.js'],
+            dest: 'dist/'
+          },
+          {
+            expand: true,
+            src: ['bower_components/**'],
+            dest: 'dist/bower_components/'
+          },
+          {
+            expand: true,
+            cwd: 'example/',
+            src: ['**'],
+            dest: 'dist/'
+          }
+        ]
+      }
+    },
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:felixdulfer/angular-iconic.git',
+          branch: 'gh-pages'
+        }
+      },
+      // local: {
+      //   options: {
+      //     remote: '../',
+      //     branch: 'build'
+      //   }
+      // }
+    },
     bump: {
       options: {
         files: ['{bower,package}.json'],
@@ -40,7 +85,13 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('serve',[
+  grunt.registerTask('build', [
+    'clean',
+    'copy:pages',
+    'buildcontrol:pages'
+  ]);
+
+  grunt.registerTask('serve', [
     'connect:livereload',
     'watch'
   ]);
