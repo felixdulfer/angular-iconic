@@ -7,6 +7,13 @@ Simple [AngularJS](https://github.com/angular/angular.js) module for [Iconic](ht
 
 **Note#2:** This project is mostly for fun and offers very limited (untested) part of what Iconic offers. Probably not suited for production environments. Feel free to fork and make it your own.
 
+Example
+=======
+
+See the [demo](http://angular-iconic.dulfer.me/) site for a couple of crude 
+examples of the component in action. This site is mostly created for 
+developing/testing the component. 
+
 Install
 =======
 
