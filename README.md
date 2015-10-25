@@ -51,24 +51,6 @@ Configuration
 This component comes with a couple of configuration options available through 
 the `$iconicProvider`.
 
-### `injector()`: Configure SVG Injector
-
-You can use either IconicJS or SVGInjector. Both Strings and Functions are OK.
-The Provider will look for `window.IconicJS` and `window.SVGInjector` and use
-whatever is available. If you want to override:
-
-```javascript
-angular.module('app', ['angular-iconic'])
-  .config(function($iconicProvider) {
-    
-    // Either as String:
-    $iconicProvider.injector('IconicJS');
-
-    // Or as Function:
-    $iconicProvider.injector(window.IconicJS);
-  });
-```
-
 ### `svgDir()`: Set a default path prefix for relative paths
 
 Don't like long paths in your `data-src` attributes? Want to just copy & paste 
@@ -101,5 +83,18 @@ Note that you can still use _absolute_ `data-src` if you need to. Any relative `
 angular.module('app', ['angular-iconic'])
   .config(function($iconicProvider) {
     $iconicProvider.pngFallback('/bower_components/open-iconic/png');
+  });
+```
+
+### `injector()`: Configure SVG Injector
+
+You can use either 'IconicJS' or 'SVGInjector'.The Provider will look for 
+`window.IconicJS` and `window.SVGInjector` and use whatever is available. 
+If you want to override:
+
+```javascript
+angular.module('app', ['angular-iconic'])
+  .config(function($iconicProvider) {    
+    $iconicProvider.injector('IconicJS');
   });
 ```

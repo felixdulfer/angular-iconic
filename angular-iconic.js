@@ -16,15 +16,22 @@ if (typeof module !== 'undefined' &&
 
   /** Gets the first available injector */
   function autoDetectInjector() {
-    return window.IconicJS || window.SVGInjector;
+    var injector;
+    if (window.IconicJS) {
+      injector = 'IconicJS';
+    } else if (window.SVGInjector) {
+      injector = 'SVGInjector';
+    }
+    return injector;
   }
 
   /** Instantiates the Injector */
   function getInjector(injector) {
-    if (typeof injector === 'string') {
-      injector = window[injector];
+    var Injector = window[injector];
+    if (injector === 'IconicJS') {
+      Injector = new Injector();
     }
-    return injector;
+    return Injector;
   }
 
   $AngularIconicProvider.$inject = [];
