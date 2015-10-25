@@ -139,6 +139,7 @@ if (typeof module !== 'undefined' &&
         var src,
           injectorOptions = {},
           iconic = $iconic.injector,
+          svgDir = attrs.svgDir || $iconic.svgDir,
           invokeApply = $iconic.invokeApply || attrs.invokeApply;
 
         // Make sure that the iconic class is always set
@@ -159,10 +160,10 @@ if (typeof module !== 'undefined' &&
         // if the path has no leading `/`, then we'll assume it is relative.
         // For ease of use we'll make it relative to the svgDir.
         // This should only change paths if the svgDir is actually configured.
-        if ($iconic.svgDir && src.substr(0,1) !== '/') {
+        if (svgDir && src.substr(0,1) !== '/') {
 
           // Strip trailing `/` and construct the new absolute path
-          src = ($iconic.svgDir).replace(/\/$/, '') + '/' + src;
+          src = (svgDir).replace(/\/$/, '') + '/' + src;
           elm.attr('data-src', src);
         }
 
