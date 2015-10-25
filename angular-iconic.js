@@ -20,14 +20,14 @@ if (typeof module !== 'undefined' &&
   }
 
   /** Instantiates the Injector */
-  function getInjector(IconicSVGInjector) {
-    if (typeof IconicSVGInjector === 'string') {
-      IconicSVGInjector = window[IconicSVGInjector];
+  function getInjector(injector) {
+    if (typeof injector === 'string') {
+      injector = window[injector];
     }
-    if (window.IconicJS && window.IconicJS === IconicSVGInjector) {
-      IconicSVGInjector = new IconicSVGInjector();
+    if (window.IconicJS && window.IconicJS === injector) {
+      injector = injector();
     }
-    return IconicSVGInjector;
+    return injector;
   }
 
   $AngularIconicProvider.$inject = [];
